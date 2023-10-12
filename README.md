@@ -2,13 +2,11 @@
 
 ```mermaid
 graph TD;
-    A[Service A] -->|Publish Message| C[AWS SNS]
-    B[Service B]
-    C -->|Notify| D[AWS SQS]
-    B -->|Receive Message| D
-    style A fill:#f9f,stroke:#333,stroke-width:4px
-    style B fill:#fc0,stroke:#333,stroke-width:2px
-    style C fill:#ff9,stroke:#333,stroke-width:2px
+    A[Go Service A] -->|Publish Message| B[AWS SNS Topic]
+    B -->|Subscribe| D[AWS SQS Queue 1]
+    B -->|Subscribe| E[AWS SQS Queue 2]
+    D -->|Consume| G[Go Service B]
+    E -->|Consume| H[Go Service C]
 ```
 
 ## Overview
