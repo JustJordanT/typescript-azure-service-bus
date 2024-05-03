@@ -1,17 +1,19 @@
-# Go AWS SNS/SQS Example
+Here's your text rewritten to use .NET instead of Go:
+
+# .NET AWS SNS/SQS Example
 
 ```mermaid
 graph TD;
-    A[Go Service A] -->|Publish Message| B[AWS SNS Topic]
+    A[.NET Service A] -->|Publish Message| B[AWS SNS Topic]
     B -->|Subscribe| D[AWS SQS Queue 1]
     B -->|Subscribe| E[AWS SQS Queue 2]
-    D -->|Consume| G[Go Service B]
-    E -->|Consume| H[Go Service C]
+    D -->|Consume| G[.NET Service B]
+    E -->|Consume| H[.NET Service C]
 ```
 
 ## Overview
 
-This project demonstrates a minimal setup to use AWS SNS and SQS with Go. It includes examples for publishing messages to an SNS topic, subscribing an SQS queue to that topic, and consuming messages from the queue.
+This project demonstrates a minimal setup to use AWS SNS and SQS with .NET. It includes examples for publishing messages to an SNS topic, subscribing an SQS queue to that topic, and consuming messages from the queue.
 
 ## Table of Contents
 
@@ -24,46 +26,48 @@ This project demonstrates a minimal setup to use AWS SNS and SQS with Go. It inc
 
 ## Prerequisites
 
-- Go 1.16 or higher
+- .NET Core 3.1 or higher
 - AWS CLI configured with appropriate permissions
-- AWS SDK for Go (`github.com/aws/aws-sdk-go`)
+- AWS SDK for .NET (`AWSSDK.Core`, `AWSSDK.SNS`, `AWSSDK.SQS`)
 
 ## Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/go-aws-sns-sqs-example.git
+    git clone https://github.com/yourusername/dotnet-aws-sns-sqs-example.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd go-aws-sns-sqs-example
+    cd dotnet-aws-sns-sqs-example
     ```
 
-3. Install dependencies:
+3. Restore the project:
 
     ```bash
-    go mod download
+    dotnet restore
     ```
 
 ## Configuration
 
-1. Rename the `.env.example` file to `.env` and fill in the required AWS credentials and configurations.
+1. Rename the `appsettings.json.example` file to `appsettings.json` and fill in the required AWS credentials and configurations.
 
-    ```env
-    AWS_REGION=your-aws-region
-    AWS_ACCESS_KEY_ID=your-access-key-id
-    AWS_SECRET_ACCESS_KEY=your-secret-access-key
-    SNS_TOPIC_ARN=your-sns-topic-arn
-    SQS_QUEUE_URL=your-sqs-queue-url
-    ```
-
-2. Load the environment variables:
-
-    ```bash
-    source .env
+    ```json
+    {
+      "AWS": {
+        "Region": "your-aws-region",
+        "AccessKeyId": "your-access-key-id",
+        "SecretAccessKey": "your-secret-access-key"
+      },
+      "SNS": {
+        "TopicARN": "your-sns-topic-arn"
+      },
+      "SQS": {
+        "QueueURL": "your-sqs-queue-url"
+      }
+    }
     ```
 
 ## Usage
@@ -73,7 +77,7 @@ This project demonstrates a minimal setup to use AWS SNS and SQS with Go. It inc
 Run the following command to publish a message to the SNS topic:
 
 ```bash
-go run cmd/publish/main.go "Your message here"
+dotnet run --project ./src/Publish
 ```
 
 ### Consume from SQS Queue
@@ -81,7 +85,7 @@ go run cmd/publish/main.go "Your message here"
 Run the following command to start consuming messages from the SQS queue:
 
 ```bash
-go run cmd/consume/main.go
+dotnet run --project ./src/Consume
 ```
 
 ## Contributing
