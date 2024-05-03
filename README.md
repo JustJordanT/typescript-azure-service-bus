@@ -35,7 +35,7 @@ This project demonstrates a minimal setup to use AWS SNS and SQS with .NET. It i
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/dotnet-aws-sns-sqs-example.git
+    git clone git@github.com:JustJordanT/communication-dotnet-aws-sns-sqs.git
     ```
 
 2. Navigate to the project directory:
