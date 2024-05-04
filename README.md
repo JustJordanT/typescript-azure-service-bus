@@ -1,5 +1,3 @@
-Here's your text rewritten to use .NET instead of Go:
-
 # .NET AWS SNS/SQS Example
 
 ```mermaid
