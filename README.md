@@ -11,7 +11,17 @@ graph TD;
 
 ## Overview
 
-This project demonstrates a minimal setup to use AWS SNS and SQS with .NET. It includes examples for publishing messages to an SNS topic, subscribing an SQS queue to that topic, and consuming messages from the queue.
+This project demonstrates a minimal setup to use AWS SNS (Simple Notification Service) and SQS (Simple Queue Service) with .NET, showcasing an implementation of event-driven architecture. It includes examples for publishing messages to an SNS topic, subscribing an SQS queue to that topic, and consuming messages from the queue.
+
+Event-driven architecture is a software design pattern in which the flow of the program is determined by events such as user actions, sensor outputs, or messages from other programs or services. In this context, AWS SNS acts as the event publisher, while SQS serves as the event consumer.
+Key aspects of event-driven architecture demonstrated in this project:
+
+- Decoupling: SNS and SQS allow for loose coupling between components, enabling greater flexibility and scalability.
+- Asynchronous communication: Messages are sent and received asynchronously, improving system responsiveness.
+- Event-driven flow: The system reacts to events (messages) as they occur, rather than following a predefined sequence of operations.
+- Scalability: By using managed services like SNS and SQS, the architecture can easily scale to handle varying loads.
+
+This setup provides a foundation for building more complex event-driven systems, allowing developers to create responsive, scalable applications that can efficiently process and react to events in real time.
 
 ## Table of Contents
 
