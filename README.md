@@ -1,25 +1,26 @@
-# .NET AWS SNS/SQS Example
+# .NET Azure Service Bus Example
 
 ```mermaid
 graph TD;
-    A[.NET Service A] -->|Publish Message| B[AWS SNS Topic]
-    B -->|Subscribe| D[AWS SQS Queue 1]
-    B -->|Subscribe| E[AWS SQS Queue 2]
-    D -->|Consume| G[.NET Service B]
-    E -->|Consume| H[.NET Service C]
+    A[.NET Service A] -->|Send Message| B[Azure Service Bus Topic]
+    B -->|Subscribe| D[Azure Service Bus Subscription 1]
+    B -->|Subscribe| E[Azure Service Bus Subscription 2]
+    D -->|Receive| G[.NET Service B]
+    E -->|Receive| H[.NET Service C]
 ```
 
 ## Overview
 
-This project demonstrates a minimal setup to use AWS SNS (Simple Notification Service) and SQS (Simple Queue Service) with .NET, showcasing an implementation of event-driven architecture. It includes examples for publishing messages to an SNS topic, subscribing an SQS queue to that topic, and consuming messages from the queue.
+This project demonstrates a minimal setup to use Azure Service Bus with .NET, showcasing an implementation of event-driven architecture. It includes examples for sending messages to a Service Bus topic, creating subscriptions to that topic, and receiving messages from the subscriptions.
 
-Event-driven architecture is a software design pattern in which the flow of the program is determined by events such as user actions, sensor outputs, or messages from other programs or services. In this context, AWS SNS acts as the event publisher, while SQS serves as the event consumer.
+Event-driven architecture is a software design pattern in which the flow of the program is determined by events such as user actions, sensor outputs, or messages from other programs or services. In this context, Azure Service Bus acts as both the event publisher and consumer.
+
 Key aspects of event-driven architecture demonstrated in this project:
 
-- Decoupling: SNS and SQS allow for loose coupling between components, enabling greater flexibility and scalability.
+- Decoupling: Azure Service Bus allows for loose coupling between components, enabling greater flexibility and scalability.
 - Asynchronous communication: Messages are sent and received asynchronously, improving system responsiveness.
 - Event-driven flow: The system reacts to events (messages) as they occur, rather than following a predefined sequence of operations.
-- Scalability: By using managed services like SNS and SQS, the architecture can easily scale to handle varying loads.
+- Scalability: By using managed services like Azure Service Bus, the architecture can easily scale to handle varying loads.
 
 This setup provides a foundation for building more complex event-driven systems, allowing developers to create responsive, scalable applications that can efficiently process and react to events in real time.
 
@@ -35,21 +36,21 @@ This setup provides a foundation for building more complex event-driven systems,
 ## Prerequisites
 
 - .NET Core 3.1 or higher
-- AWS CLI configured with appropriate permissions
-- AWS SDK for .NET (`AWSSDK.Core`, `AWSSDK.SNS`, `AWSSDK.SQS`)
+- Azure CLI configured with appropriate permissions
+- Azure SDK for .NET (`Azure.Messaging.ServiceBus`)
 
 ## Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone git@github.com:JustJordanT/communication-dotnet-aws-sns-sqs.git
+    git clone git@github.com:YourUsername/dotnet-azure-service-bus-example.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd dotnet-aws-sns-sqs-example
+    cd dotnet-azure-service-bus-example
     ```
 
 3. Restore the project:
@@ -60,40 +61,37 @@ This setup provides a foundation for building more complex event-driven systems,
 
 ## Configuration
 
-1. Rename the `appsettings.json.example` file to `appsettings.json` and fill in the required AWS credentials and configurations.
+1. Rename the `appsettings.json.example` file to `appsettings.json` and fill in the required Azure Service Bus connection string and configurations.
 
     ```json
     {
-      "AWS": {
-        "Region": "your-aws-region",
-        "AccessKeyId": "your-access-key-id",
-        "SecretAccessKey": "your-secret-access-key"
-      },
-      "SNS": {
-        "TopicARN": "your-sns-topic-arn"
-      },
-      "SQS": {
-        "QueueURL": "your-sqs-queue-url"
+      "Azure": {
+        "ServiceBus": {
+          "ConnectionString": "your-service-bus-connection-string",
+          "TopicName": "your-topic-name",
+          "Subscription1Name": "your-subscription-1-name",
+          "Subscription2Name": "your-subscription-2-name"
+        }
       }
     }
     ```
 
 ## Usage
 
-### Publish to SNS Topic
+### Send to Service Bus Topic
 
-Run the following command to publish a message to the SNS topic:
+Run the following command to send a message to the Service Bus topic:
 
 ```bash
-dotnet run --project ./src/Publish
+dotnet run --project ./src/Sender
 ```
 
-### Consume from SQS Queue
+### Receive from Service Bus Subscription
 
-Run the following command to start consuming messages from the SQS queue:
+Run the following command to start receiving messages from a Service Bus subscription:
 
 ```bash
-dotnet run --project ./src/Consume
+dotnet run --project ./src/Receiver
 ```
 
 ## Contributing
