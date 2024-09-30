@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service.beta", "service.bet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service.gamma", "service.gamma\service.gamma.csproj", "{7B3D3EC0-775F-4CBE-A642-807F1A4E4A15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service.data", "service.data\service.data.csproj", "{BAB8163B-676F-473B-B2A4-0F0FB381D205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service.servicebus", "service.servicebus\service.servicebus.csproj", "{13FB988B-34FC-4D89-9436-6F6618EBD14C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{7B3D3EC0-775F-4CBE-A642-807F1A4E4A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B3D3EC0-775F-4CBE-A642-807F1A4E4A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B3D3EC0-775F-4CBE-A642-807F1A4E4A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB8163B-676F-473B-B2A4-0F0FB381D205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB8163B-676F-473B-B2A4-0F0FB381D205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB8163B-676F-473B-B2A4-0F0FB381D205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB8163B-676F-473B-B2A4-0F0FB381D205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FB988B-34FC-4D89-9436-6F6618EBD14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FB988B-34FC-4D89-9436-6F6618EBD14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FB988B-34FC-4D89-9436-6F6618EBD14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FB988B-34FC-4D89-9436-6F6618EBD14C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
