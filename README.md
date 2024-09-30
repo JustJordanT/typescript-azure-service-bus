@@ -42,7 +42,7 @@ This setup provides a foundation for building more complex event-driven systems,
 1. Clone the repository:
 
     ```bash
-    git clone git@github.com:YourUsername/dotnet-azure-service-bus-example.git
+    git clone git@github.com:justjordant/dotnet-azure-service-bus.git
     ```
 
 2. Navigate to the project directory:
