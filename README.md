@@ -2,14 +2,12 @@
 
 ```mermaid
 graph TD;
-    A[.NET Service A] -->|Send Message| B[Azure Service Bus Topic]
-    B -->|Subscribe| D[Azure Service Bus Subscription 1]
-    B -->|Subscribe| E[Azure Service Bus Subscription 2]
-    D -->|Receive| G[.NET Service B]
-    E -->|Receive| H[.NET Service C]
+    A[.NET Service Alpha] -->|Send Message| B[Azure Service Bus Queue]
+    B -->|Receive| G[.NET Service Beta]
+    B -->|Receive| H[.NET Service Gamma]
 ```
 
-## Overview
+## Overviews
 
 This project demonstrates a minimal setup to use Azure Service Bus with .NET, showcasing an implementation of event-driven architecture. It includes examples for sending messages to a Service Bus topic, creating subscriptions to that topic, and receiving messages from the subscriptions.
 
@@ -50,7 +48,7 @@ This setup provides a foundation for building more complex event-driven systems,
 2. Navigate to the project directory:
 
     ```bash
-    cd dotnet-azure-service-bus-example
+    cd dotnet-azure-service-bus
     ```
 
 3. Restore the project:
@@ -67,10 +65,7 @@ This setup provides a foundation for building more complex event-driven systems,
     {
       "Azure": {
         "ServiceBus": {
-          "ConnectionString": "your-service-bus-connection-string",
-          "TopicName": "your-topic-name",
-          "Subscription1Name": "your-subscription-1-name",
-          "Subscription2Name": "your-subscription-2-name"
+          "ConnectionString": "your-service-bus-connection-string"
         }
       }
     }
@@ -83,7 +78,7 @@ This setup provides a foundation for building more complex event-driven systems,
 Run the following command to send a message to the Service Bus topic:
 
 ```bash
-dotnet run --project ./src/Sender
+dotnet run --project ./service.alpha
 ```
 
 ### Receive from Service Bus Subscription
@@ -91,7 +86,8 @@ dotnet run --project ./src/Sender
 Run the following command to start receiving messages from a Service Bus subscription:
 
 ```bash
-dotnet run --project ./src/Receiver
+dotnet run --project ./service.beta
+dotnet run --project ./service.gamma
 ```
 
 ## Contributing
