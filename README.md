@@ -1,4 +1,4 @@
-# .NET Azure Service Bus Example
+# .NET Azure Service Bus
 
 ```mermaid
 graph TD;
