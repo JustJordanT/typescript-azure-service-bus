@@ -1,6 +1,0 @@
-@service.gamma_HostAddress = http://localhost:5079
-
-GET {{service.gamma_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
