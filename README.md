@@ -1,32 +1,54 @@
-# TypeScript Azure Service Bus
+# Go AWS Event-Driven Architecture
 
 ```mermaid
-graph TD;
-    A[TypeScript Service A] -->|Send Message| B[Azure Service Bus Queue]
-    B -->|Receive| G[TypeScript Service B]
-    B -->|Receive| H[TypeScript Service C]
+graph TD
+        A2[Go Service A] -->|Publish| B2[AWS SNS Topic]
+        B2 -->|Fan out| C2[AWS SQS Queue 1]
+        B2 -->|Fan out| D2[AWS SQS Queue 2]
+        C2 -->|Receive| E2[Go Service B]
+        D2 -->|Receive| F2[Go Service C]
 ```
 
-## Overviews
+## Architecture Overview
+This project implements a serverless event-driven architecture using AWS SNS (Simple Notification Service) and SQS (Simple Queue Service). The pattern combines the immediate fan-out capabilities of SNS with the reliable message processing of SQS to create a robust, scalable messaging system.
 
-This project demonstrates a minimal setup to use Azure Service Bus with TypeScript, showcasing an implementation of event-driven architecture. It includes examples for sending messages to a Service Bus topic, creating subscriptions to that topic, and receiving messages from the subscriptions.
+### Why SNS + SQS?
+- **Reliability**: Guaranteed message delivery with built-in retry logic and dead-letter queues
+- **Scalability**: Handles millions of messages with automatic scaling
+- **Decoupling**: Services can evolve independently without affecting each other
+- **Flexibility**: Easy to add new consumers without modifying existing code
+- **Cost-Effective**: Pay only for what you use with serverless infrastructure
 
-Event-driven architecture is a software design pattern in which the flow of the program is determined by events such as user actions, sensor outputs, or messages from other programs or services. In this context, Azure Service Bus acts as both the event publisher and consumer.
+### System Flow
+1. Publisher sends a single message to SNS Topic
+2. SNS automatically fans out to multiple SQS queues
+3. Consumer services process messages at their own pace
+4. Built-in error handling with dead-letter queues
+5. Automatic message tracking and monitoring
 
-Key aspects of event-driven architecture demonstrated in this project:
+This architecture is ideal for systems requiring reliable message delivery, service decoupling, and independent scaling of components.
 
-- Decoupling: Azure Service Bus allows for loose coupling between components, enabling greater flexibility and scalability.
-- Asynchronous communication: Messages are sent and received asynchronously, improving system responsiveness.
-- Event-driven flow: The system reacts to events (messages) as they occur, rather than following a predefined sequence of operations.
-- Scalability: By using managed services like Azure Service Bus, the architecture can easily scale to handle varying loads.
+Key features:
+- Message publishing via SNS
+- Message consumption via SQS
+- Decoupled service architecture
+- Scalable message processing
 
-This setup provides a foundation for building more complex event-driven systems, allowing developers to create responsive, scalable applications that can efficiently process and react to events in real time.
+## Prerequisites
+- Go 1.21+
+- AWS Account
+- AWS CLI configured
+- AWS SDK for Go v2
 
-## Table of Contents
+## Configuration
+Required AWS resources:
+- SNS Topic
+- SQS Queues (one per consumer)
+- IAM roles with appropriate permissions
 
-1. [Prerequisites](#prerequisites)
-2. [Installation](#installation)
-3. [Configuration](#configuration)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
+## Infrastructure Setup
+1. Create SNS Topic
+2. Create SQS Queues
+3. Subscribe SQS queues to SNS Topic
+4. Configure Dead Letter Queues (recommended)
+
